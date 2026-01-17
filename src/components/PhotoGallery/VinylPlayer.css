@@ -1,0 +1,408 @@
+/* ===== VINTAGE VINYL PLAYER ===== */
+.vinyl-player-card {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 50%, #2c3e50 100%);
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.5),
+    0 5px 15px rgba(0, 0, 0, 0.4),
+    inset 0 1px 2px rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  max-width: 600px;
+  width: 90%;
+}
+
+/* Subtle texture overlay */
+.vinyl-player-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.01) 0px,
+      rgba(255, 255, 255, 0.01) 1px,
+      transparent 2px,
+      transparent 6px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.008) 0px,
+      rgba(255, 255, 255, 0.008) 1px,
+      transparent 2px,
+      transparent 8px
+    );
+  border-radius: 20px;
+  opacity: 0.3;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+.vinyl-player-container {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  position: relative;
+}
+
+/* Vinyl Section */
+.vinyl-section {
+  position: relative;
+}
+
+.vinyl-disc {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: 
+    radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 20%),
+    radial-gradient(circle at 70% 70%, rgba(255, 255, 255, 0.05) 0%, transparent 15%),
+    linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 50%, #1a1a1a 100%);
+  box-shadow: 
+    0 8px 25px rgba(0, 0, 0, 0.6),
+    0 4px 12px rgba(0, 0, 0, 0.4),
+    inset 0 2px 4px rgba(255, 255, 255, 0.1);
+  position: relative;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.vinyl-disc.rotating {
+  animation: vinylRotate 3s linear infinite;
+}
+
+@keyframes vinylRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Vinyl Grooves */
+.vinyl-grooves {
+  position: absolute;
+  inset: 15px;
+  border-radius: 50%;
+  background: 
+    repeating-radial-gradient(
+      circle at center,
+      transparent 0px,
+      transparent 2px,
+      rgba(255, 255, 255, 0.02) 3px,
+      transparent 4px
+    );
+}
+
+/* Vinyl Reflection */
+.vinyl-reflection {
+  position: absolute;
+  top: 20%;
+  left: 15%;
+  width: 30%;
+  height: 30%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(2px);
+  animation: shimmer 4s infinite ease-in-out;
+}
+
+@keyframes shimmer {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+
+/* Vinyl Label */
+.vinyl-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f5e6d3 0%, #e8d5b7 50%, #f5e6d3 100%);
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.3),
+    inset 0 1px 2px rgba(255, 255, 255, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Georgia', serif;
+}
+
+.label-text {
+  font-size: 8px;
+  font-weight: bold;
+  color: #8b4513;
+  text-align: center;
+  line-height: 1;
+}
+
+.label-subtitle {
+  font-size: 6px;
+  color: #a0522d;
+  margin-top: 2px;
+  font-style: italic;
+}
+
+/* Controls Section */
+.controls-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Song Info */
+.song-info {
+  text-align: center;
+}
+
+.song-title {
+  font-family: 'Playfair Display', 'Georgia', serif;
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: #ecf0f1;
+  letter-spacing: 0.05em;
+  margin: 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, #3498db 0%, #ecf0f1 50%, #3498db 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.song-subtitle {
+  font-family: 'Cormorant Garamond', 'Georgia', serif;
+  font-size: 1rem;
+  color: #bdc3c7;
+  font-style: italic;
+  letter-spacing: 0.03em;
+  margin: 5px 0 0 0;
+  opacity: 0.8;
+}
+
+/* Antique Divider */
+.antique-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #3498db 20%,
+    #3498db 80%,
+    transparent 100%
+  );
+  position: relative;
+  margin: 10px 0;
+}
+
+.antique-divider::before,
+.antique-divider::after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border: 1px solid #3498db;
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.antique-divider::before {
+  left: 20%;
+}
+
+.antique-divider::after {
+  right: 20%;
+}
+
+/* Progress Container */
+.progress-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 2px;
+  background: rgba(201, 162, 77, 0.2);
+  border-radius: 1px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #c9a24d 0%, #ffd700 50%, #c9a24d 100%);
+  border-radius: 1px;
+  transition: width 0.3s ease;
+  box-shadow: 0 0 8px rgba(201, 162, 77, 0.4);
+}
+
+.time-display {
+  font-family: 'Courier New', monospace;
+  font-size: 0.8rem;
+  color: #e8d5b7;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+
+/* Control Buttons */
+.control-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.control-btn {
+  background: linear-gradient(135deg, #c9a24d 0%, #ffd700 50%, #c9a24d 100%);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  color: #1a1a1a;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.3),
+    inset 0 1px 2px rgba(255, 255, 255, 0.3);
+}
+
+.control-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 
+    0 6px 20px rgba(201, 162, 77, 0.4),
+    inset 0 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+.play-btn.playing {
+  background: linear-gradient(135deg, #ffd700 0%, #ffed4e 50%, #ffd700 100%);
+  box-shadow: 
+    0 4px 12px rgba(255, 215, 0, 0.4),
+    0 0 20px rgba(255, 215, 0, 0.3),
+    inset 0 1px 2px rgba(255, 255, 255, 0.5);
+  animation: playGlow 2s infinite ease-in-out;
+}
+
+@keyframes playGlow {
+  0%, 100% { box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4), 0 0 20px rgba(255, 215, 0, 0.3), inset 0 1px 2px rgba(255, 255, 255, 0.5); }
+  50% { box-shadow: 0 4px 12px rgba(255, 215, 0, 0.6), 0 0 30px rgba(255, 215, 0, 0.5), inset 0 1px 2px rgba(255, 255, 255, 0.7); }
+}
+
+.stop-btn {
+  width: 35px;
+  height: 35px;
+  font-size: 14px;
+}
+
+.volume-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.volume-btn {
+  width: 30px;
+  height: 30px;
+  font-size: 12px;
+}
+
+.volume-indicator {
+  width: 40px;
+  height: 3px;
+  background: rgba(201, 162, 77, 0.2);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.volume-bar {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  position: relative;
+}
+
+.volume-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #c9a24d 0%, #ffd700 100%);
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .vinyl-player-card {
+    top: 10px;
+    padding: 20px;
+    max-width: 95%;
+  }
+  
+  .vinyl-player-container {
+    gap: 20px;
+  }
+  
+  .vinyl-disc {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .song-title {
+    font-size: 1.5rem;
+  }
+  
+  .song-subtitle {
+    font-size: 0.9rem;
+  }
+  
+  .control-btn {
+    width: 35px;
+    height: 35px;
+    font-size: 14px;
+  }
+  
+  .stop-btn {
+    width: 30px;
+    height: 30px;
+    font-size: 12px;
+  }
+  
+  .volume-btn {
+    width: 25px;
+    height: 25px;
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .vinyl-player-card {
+    padding: 15px;
+  }
+  
+  .vinyl-player-container {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .vinyl-disc {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .song-title {
+    font-size: 1.3rem;
+  }
+  
+  .controls-section {
+    width: 100%;
+  }
+}
